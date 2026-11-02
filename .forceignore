@@ -1,7 +1,4 @@
-# List files or directories below to ignore them when running force:source:push, force:source:pull, and force:source:status
-# More information: https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_exclude_source.htm
-#
-
+# Files and folders listed below are ignored by sf project deploy and sf project retrieve.
 package.xml
 
 # LWC configuration files
@@ -11,4 +8,13 @@ package.xml
 # LWC Jest
 **/__tests__/**
 
+# --- Node.js tooling (local only, never deployed to an org) ---
 node_modules/
+
+# --- Access is managed with permission sets, not profiles ---
+# Creating fields in Setup quietly edits profiles; keep those changes out of the project.
+**/profiles/**
+
+# --- Org-generated noise (not part of this project) ---
+# Experience Cloud content the scratch org changes on its own.
+**/digitalExperiences/**
