@@ -1,0 +1,22 @@
+name: Hello pipeline
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v7
+
+      - name: Install Salesforce CLI
+        run: npm install --global @salesforce/cli
+
+      - name: Show CLI version
+        run: sf --version
+
+      - name: List the metadata files
+        run: find force-app -type f
